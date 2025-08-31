@@ -203,7 +203,7 @@ flexx <- function(z,x,n) {
     g <- ggplot(pl_tbl, aes(x="",y=pl_tbl[,n+1], fill = key)) +
       geom_bar(stat="identity",position = "stack") +
       theme_void() +
-      coord_polar("y", start=0) +
+      coord_polar("y", start=0) +  labs(fill="Key") + 
       geom_text(data = subset(test,labs!=0),aes(y = pos,label= paste0(labs,"%"))) +
       scale_fill_manual(labels = c("4", "3", "2","1"),values = c("#40D60B","#e8f347","#FFA023","#ff0017") )
     q <- paste0("Q",n," ",qb[n,1])
@@ -214,9 +214,7 @@ flexx <- function(z,x,n) {
     n = n - 10
     
     test <- pl_tbl_2
-    
     test$labs <- test[,n+1]
-    
     test <- test %>%
       arrange(labs) %>%
       mutate(pos = cumsum(labs) - 0.5*labs)
@@ -226,7 +224,7 @@ flexx <- function(z,x,n) {
     g <- ggplot(pl_tbl_2, aes(x="",y=pl_tbl_2[,n+1], fill = opt)) +
       geom_bar(stat="identity",position = "stack") +
       theme_void() +
-      coord_polar("y", start=0) +
+      coord_polar("y", start=0) + labs(fill="Key") + 
       scale_fill_manual(labels = c("5","4", "3", "2","1"), values = c("#40D60B","#e8f347","#ff9f00","#ff4600","#b30017")) +
       geom_text(data = subset(test,labs!=0),aes(y = pos,label= paste0(labs,"%"))) 
   }
@@ -251,4 +249,6 @@ for(i in seq(1,13)){
 
 
 print(z,"feedback.docx")
+
+
 
