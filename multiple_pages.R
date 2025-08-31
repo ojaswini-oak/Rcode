@@ -8,7 +8,7 @@ library(ggplot2)
 
 #Reading data from excel
 df <- as.data.frame(read_excel("feedback.xlsx",sheet=1))
-qb <- as.data.frame(read_excel("feedback.xlsx",sheet=3))
+qb <- as.data.frame(read_excel("feedback.xlsx",sheet=2))
 
 #removing extra row for person no.
 rownames(df) <- df[,1]
